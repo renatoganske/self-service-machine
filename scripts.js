@@ -63,11 +63,24 @@ var products = [
         "quantity": 1
     }
 ];
- 
+
 const SelfServiceMachine = {
     data() {
         return {
             products: window.products
+        }
+    },
+    methods: {
+        total: function () {
+            var total = 0;
+
+            this.products.forEach(function (item) {
+                if (item.active) {
+                    total += item.price * item.quantity;
+                }
+            });
+
+            return total.toFixed(2);
         }
     }
 };
